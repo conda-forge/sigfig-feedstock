@@ -1,5 +1,5 @@
 {% set name = "sigfig" %}
-{% set version = "1.3.16" %}
+{% set version = "1.3.17" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/sigfig-{{ version }}.tar.gz
-  sha256: 443e47f6dbad5276a4b26fdde3a0e169cd8329038475016a26bb471430753e61
+  sha256: 490fccae9ffcaa15377b215b1d8ddba0f33453053dd8d3a299bf0c5c954429a0
 
 build:
   noarch: python
