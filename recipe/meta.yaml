@@ -1,3 +1,4 @@
+{% set python_min = '3.11' %}
 {% set name = "sigfig" %}
 {% set version = "1.3.18" %}
 
@@ -12,15 +13,15 @@ source:
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  number: 1
 
 requirements:
   host:
-    - python >=3.11,<4.0
+    - python {{ python_min }}
     - pip
     - poetry-core
   run:
-    - python >=3.11,<4.0
+    - python >={{ python_min }},<4.0
     - sortedcontainers >=2.4.0,<3.0.0
 
 test:
@@ -30,6 +31,7 @@ test:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/drakegroup/sigfig
