@@ -1,0 +1,46 @@
+schema_version: 1
+
+context:
+  name: sigfig
+  version: "1.4.0"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://files.pythonhosted.org/packages/source/${{ name[0] }}/${{ name }}/sigfig-${{ version }}.tar.gz
+  sha256: ea818f83bffa2ee4d1dce7d4afcfddc03a9214b8aa952be4ad47b4996eba8e70
+
+build:
+  number: 1
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv
+
+requirements:
+  host:
+    - python ${{ python_min }}.*
+    - pip
+    - setuptools
+  run:
+    - python >=${{ python_min }}
+
+tests:
+  - python:
+      imports:
+        - sigfig
+      pip_check: true
+      python_version:
+        - ${{ python_min }}.*
+        - "*"
+
+about:
+  summary: Python library for rounding numbers (with expected results)
+  license: MIT
+  license_file: LICENSE
+  homepage: https://github.com/drakegroup/sigfig
+  documentation: https://sigfig.readthedocs.io/
+
+extra:
+  recipe-maintainers:
+    - thewchan
